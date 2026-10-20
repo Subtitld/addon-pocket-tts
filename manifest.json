@@ -1,0 +1,343 @@
+{
+  "manifest_version": 1,
+  "id": "pocket-tts",
+  "version": "26.10.1",
+  "display_name": "Pocket TTS (offline, 7 languages)",
+  "summary": "Kyutai's Pocket TTS: speaks English, French, German, Portuguese, Italian, Spanish and Dutch at 24 kHz, in 23 voices, on the CPU at several times real time. Each language's model, about 220 MB, downloads on its first line.",
+  "author": "Subtitld",
+  "homepage": "https://github.com/Subtitld/addon-pocket-tts",
+  "license": "Apache-2.0 (add-on); MIT (Pocket TTS); CC-BY-4.0 (weights)",
+  "executable": "bin/pocket-tts-addon",
+  "protocol": 1,
+  "startup_timeout_sec": 30,
+  "platforms": [
+    "linux",
+    "macos",
+    "windows"
+  ],
+  "tasks": [
+    "tts.synthesize"
+  ],
+  "compute": "cpu",
+  "voice_clone": false,
+  "languages": [
+    "en",
+    "fr",
+    "de",
+    "pt",
+    "it",
+    "es",
+    "nl"
+  ],
+  "voices": [
+    {
+      "id": "alba",
+      "language": "*",
+      "display_name": "Alba (woman, casual)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "anna",
+      "language": "*",
+      "display_name": "Anna (woman, British)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "azelma",
+      "language": "*",
+      "display_name": "Azelma (woman, Canadian)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "caro_davy",
+      "language": "*",
+      "display_name": "Caro (woman, audiobook reader)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "eponine",
+      "language": "*",
+      "display_name": "Eponine (woman, Scottish)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "estelle",
+      "language": "*",
+      "display_name": "Estelle (woman, French)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "eve",
+      "language": "*",
+      "display_name": "Eve (woman, American)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "fantine",
+      "language": "*",
+      "display_name": "Fantine (woman, British)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "jane",
+      "language": "*",
+      "display_name": "Jane (woman, American)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "lola",
+      "language": "*",
+      "display_name": "Lola (woman, Spanish)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "mary",
+      "language": "*",
+      "display_name": "Mary (woman, American)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "vera",
+      "language": "*",
+      "display_name": "Vera (woman, British)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "bill_boerst",
+      "language": "*",
+      "display_name": "Bill (man, audiobook reader)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "charles",
+      "language": "*",
+      "display_name": "Charles (man, British)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "daan",
+      "language": "*",
+      "display_name": "Daan (man, Dutch)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "george",
+      "language": "*",
+      "display_name": "George (man, American)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "giovanni",
+      "language": "*",
+      "display_name": "Giovanni (man, Italian)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "javert",
+      "language": "*",
+      "display_name": "Javert (man, deep)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "marius",
+      "language": "*",
+      "display_name": "Marius (man, soft)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "michael",
+      "language": "*",
+      "display_name": "Michael (man, American)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "paul",
+      "language": "*",
+      "display_name": "Paul (man, British)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "peter_yearsley",
+      "language": "*",
+      "display_name": "Peter (man, audiobook reader)",
+      "sample_rate": 24000
+    },
+    {
+      "id": "stuart_bell",
+      "language": "*",
+      "display_name": "Stuart (man, audiobook reader)",
+      "sample_rate": 24000
+    }
+  ],
+  "models": [
+    {
+      "id": "english",
+      "display_name": "English",
+      "language": "en",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": true
+    },
+    {
+      "id": "french",
+      "display_name": "French",
+      "language": "fr",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": true
+    },
+    {
+      "id": "german",
+      "display_name": "German",
+      "language": "de",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": true
+    },
+    {
+      "id": "portuguese",
+      "display_name": "Portuguese",
+      "language": "pt",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": true
+    },
+    {
+      "id": "italian",
+      "display_name": "Italian",
+      "language": "it",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": true
+    },
+    {
+      "id": "spanish",
+      "display_name": "Spanish",
+      "language": "es",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": true
+    },
+    {
+      "id": "dutch",
+      "display_name": "Dutch",
+      "language": "nl",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": true
+    },
+    {
+      "id": "french_24l",
+      "display_name": "French (large preview)",
+      "language": "fr",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    },
+    {
+      "id": "german_24l",
+      "display_name": "German (large preview)",
+      "language": "de",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    },
+    {
+      "id": "portuguese_24l",
+      "display_name": "Portuguese (large preview)",
+      "language": "pt",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    },
+    {
+      "id": "italian_24l",
+      "display_name": "Italian (large preview)",
+      "language": "it",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    },
+    {
+      "id": "spanish_24l",
+      "display_name": "Spanish (large preview)",
+      "language": "es",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    },
+    {
+      "id": "dutch_24l",
+      "display_name": "Dutch (large preview)",
+      "language": "nl",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    },
+    {
+      "id": "english_2026-09_24l",
+      "display_name": "English (large preview)",
+      "language": "en",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    },
+    {
+      "id": "english_18m_refl_2026-10",
+      "display_name": "English (small, 18M)",
+      "language": "en",
+      "repo": "kyutai/pocket-tts-without-voice-cloning",
+      "license": "CC-BY-4.0",
+      "bundled": false,
+      "default": false
+    }
+  ],
+  "disk_required_mb": 300,
+  "ram_required_mb": 1024,
+  "config_schema": {
+    "fields": [
+      {
+        "key": "model",
+        "type": "select",
+        "label": "Model",
+        "default": "standard",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Standard: 220 MB per language, about 3 times faster than real time"
+          },
+          {
+            "value": "small",
+            "label": "Small, English only: 112 MB, about twice as fast as Standard"
+          },
+          {
+            "value": "large",
+            "label": "Large preview: 670 MB per language (1.3 GB for English), about real time"
+          }
+        ],
+        "help": "Small exists for English only; other languages use Standard with it. Kyutai's large models are previews: in our test they made no fewer mistakes than Standard, at a third of the speed. Listen before you dub a whole film with them."
+      },
+      {
+        "key": "quantize",
+        "type": "bool",
+        "default": false,
+        "label": "Use less memory",
+        "help": "Runs the model with 8-bit weights: about a third less memory (450 MB instead of 660 MB with Standard), about a fifth slower, with a small loss of quality."
+      }
+    ]
+  }
+}

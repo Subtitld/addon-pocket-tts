@@ -1,0 +1,25 @@
+Component:   pocket-tts, Kyutai's standalone Pocket TTS binary (bin/_internal/assets/pocket-tts)
+Version:     the binary of release v4.0.0 (Rust package 3.3.0)
+Licence:     MIT (LICENSE in this folder, from the release archive)
+Author:      Kyutai (the licence text names no copyright holder)
+
+Where it comes from
+-------------------
+https://github.com/kyutai-labs/pocket-tts/releases/tag/v4.0.0, unmodified.
+Each platform's archive is checked against the sha256 that the release's
+SHA256SUMS lists (tools/fetch_binary.py in this add-on's repository). Its
+source is that tag's rust/ folder.
+
+What it links
+-------------
+The binary links about 400 Rust crates statically, and the C and C++ code two
+of them compile: AWS-LC (TLS, which the add-on does not use: it hands the
+binary local files only) and SentencePiece. CRATES.txt holds every licence
+text, generated from the tag's Cargo.lock by tools/crate_licences.py.
+
+The MPL-2.0 crates among them (the symphonia audio decoders, colored,
+option-ext) are unmodified. Their Source Code Form is on crates.io at the
+versions CRATES.txt names, for example https://crates.io/crates/symphonia/0.5.5.
+
+The Windows binary is linked with the static Microsoft C runtime
+(+crt-static), Microsoft "Distributable Code" (see ../msvc-runtime/NOTICE.txt).

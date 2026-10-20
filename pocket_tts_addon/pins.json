@@ -1,0 +1,2331 @@
+{
+ "upstream": "v4.0.0",
+ "repo": "kyutai/pocket-tts-without-voice-cloning",
+ "models": {
+  "english": {
+   "config": "# Default English model: identical weights to english_2026-09_2.yaml.\n\nweights_path: {weights}\n# Human evals preferred this model at 0.3 (equal WER/similarity/speech rate).\ndefault_temperature: 0.3\n\n\n# Replace characters that are absent from the training data.\nreplace_characters:\n  '’': \"'\"\n  '‘': \"'\"\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 6\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: final.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/english/model.safetensors",
+    "revision": "575d14372df89a4534bcb989870a34e77544b09f",
+    "size": 219029196,
+    "sha256": "e106c451108e066119f070eb7cf6c9ff4a2ad93f3bf04c9914cc94c66b7a4eeb"
+   },
+   "tokenizer": {
+    "path": "languages/english/tokenizer.json",
+    "revision": "00eac05ed3d16bdc3f6b5d598874019c34a89214",
+    "size": 245020,
+    "sha256": "f498428e1eafee50492f7be13dc9bfafcfc12e508cd0eb1b01c92ecd5d8c6687"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/english/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "4206b7194018c7e345e5cfd99f147caad36285df858ea153d0188c40d9f261e5"
+    },
+    "anna": {
+     "path": "languages/english/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7620408,
+     "sha256": "4f1a928fc92ae04367324cc5d880745c1e6680bd56bf99e5d26a1e80c2cff421"
+    },
+    "azelma": {
+     "path": "languages/english/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7178040,
+     "sha256": "cc09e106a1acf5fe0b4c5de61b2b7686080b7bab853f9c11bfef219801bf3126"
+    },
+    "caro_davy": {
+     "path": "languages/english/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "971a47f7e655e4e377915b2862f2b1242aa4f27659ed936c85387bc2dfe17595"
+    },
+    "eponine": {
+     "path": "languages/english/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6932280,
+     "sha256": "897d1d697e433f4ac1f0a8957fd2d69b073e316935c681fe488a7bf63a2b9a7b"
+    },
+    "estelle": {
+     "path": "languages/english/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7571256,
+     "sha256": "c6d0487d2a3e3d830b5dc3595ee9804df4920d87beb6dca042d769474e34db75"
+    },
+    "eve": {
+     "path": "languages/english/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "d31289743fdf306517925afb91e99c27b4d336c127013d2c4d1212791a41cf37"
+    },
+    "fantine": {
+     "path": "languages/english/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6440760,
+     "sha256": "a1803e41334934b199f4c7a2a4cec1069a75c0b3cb100e3cc3b5e76f0b07dd9e"
+    },
+    "jane": {
+     "path": "languages/english/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7325496,
+     "sha256": "495ff63b1757ceb68a7a8e2d369b780e9d60dcd98a25ef784e246c65c9af4d90"
+    },
+    "lola": {
+     "path": "languages/english/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5457720,
+     "sha256": "5be565a67bc85610d7b1d0a44fb7fb658d5d324504a4341a619ef1641f363503"
+    },
+    "mary": {
+     "path": "languages/english/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5949240,
+     "sha256": "f05824557190fe66e39837337d65c6c400aa54920bae316e1245eeb4cd447b8b"
+    },
+    "vera": {
+     "path": "languages/english/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6686520,
+     "sha256": "6deb7eb7606810edbba1c9639376d6750a8f441e464e279c43341debf5c29765"
+    },
+    "bill_boerst": {
+     "path": "languages/english/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6539064,
+     "sha256": "063b245f60f682a2403e4c61d2e8754e0a2916d75b2cd515cc97355a9e7a10a8"
+    },
+    "charles": {
+     "path": "languages/english/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6195000,
+     "sha256": "21806203b56a8ee954b66a33fcdea636c67cd54760f20f12f7586062d9455337"
+    },
+    "daan": {
+     "path": "languages/english/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3884848,
+     "sha256": "2241724e629acd348f2c810b587441812f1412262b6244378db5f73af430c8ac"
+    },
+    "george": {
+     "path": "languages/english/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5900088,
+     "sha256": "fc5ff4439cbbb532b69d2762524b55844e03352102f13376f2fa00443bc04090"
+    },
+    "giovanni": {
+     "path": "languages/english/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4130608,
+     "sha256": "abe83e91cc6984dc7d8ae1362fe4282ec095198087db7c2519f7a42dae2d9630"
+    },
+    "javert": {
+     "path": "languages/english/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "f60f4603404152370ae5ad4d01fa9ad3e1afd3a5df6122aa3dd88ed95fbfd6f8"
+    },
+    "marius": {
+     "path": "languages/english/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "6fd2496993221be51edc027820fa465b67221d7e369b8caeab40076040d561dd"
+    },
+    "michael": {
+     "path": "languages/english/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7128888,
+     "sha256": "188f29bf53aca645d77accd44455b494a28e17d94b1658fbaec80f679371ad13"
+    },
+    "paul": {
+     "path": "languages/english/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6833976,
+     "sha256": "02b77e48b791c7ece818d7f85b98459bc8dc035104e6327635053ffb56898050"
+    },
+    "peter_yearsley": {
+     "path": "languages/english/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639088,
+     "sha256": "7410cc6531929ea0ea7daa3a3f083a78239701df31acc60583172585a9304c3e"
+    },
+    "stuart_bell": {
+     "path": "languages/english/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "6ccec2880941cd132a9997798c8b0350d3dd547c890e45024873a85b017e5b39"
+    }
+   }
+  },
+  "french": {
+   "config": "weights_path: {weights}\n\nremove_semicolons: true\n# Replace characters that are absent from the training data.\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': \"'\"\n  '‘': \"'\"\n  ':': ','\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 6\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/french/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 219029196,
+    "sha256": "56366cfed6c25bfcd3bf4c61e66e06efaf52e78a5d06e1dcade1c588495bc699"
+   },
+   "tokenizer": {
+    "path": "languages/french/tokenizer.json",
+    "revision": "8843db76457a91db32077edf8dfcd1c0e3e755fd",
+    "size": 246403,
+    "sha256": "6211acffe9cb95172f71f0051f18e26ea305b2b32ea00b331ee976551c70887f"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/french/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "4c80b1438668290542068bbc9515abd2c267f4cc86764c6633fcde395d1b2681"
+    },
+    "anna": {
+     "path": "languages/french/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7620408,
+     "sha256": "7a7fae31e4b0e16102cb2514f96189cdb57c8403f5f7aba2b37aa942e2d03488"
+    },
+    "azelma": {
+     "path": "languages/french/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7178040,
+     "sha256": "d5f6e1176878323101cecf7595c3a8fd998048a0a5eefb864dbfcc0e453065f8"
+    },
+    "caro_davy": {
+     "path": "languages/french/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "40db2cb5e47bb98f151d7a3591ae269fd437682c08e4762a231009ac516bb66d"
+    },
+    "eponine": {
+     "path": "languages/french/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6932280,
+     "sha256": "8e216220a7e8a69f7aa01ec85db2e63a445f9af6b907c43640a53a1889e6125b"
+    },
+    "estelle": {
+     "path": "languages/french/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7571256,
+     "sha256": "d9efd55657f74ba9483caec23f9fd1d155e121b058feef86af3760d54ea8aa15"
+    },
+    "eve": {
+     "path": "languages/french/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "b642a43b786fb60571656814cc66f9c24f8a457ea9f727903ea97d647d5ceedb"
+    },
+    "fantine": {
+     "path": "languages/french/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6440760,
+     "sha256": "2ebba7baef8586851c589226e58414b21386a20dbac4c45746cd4317e51ff57b"
+    },
+    "jane": {
+     "path": "languages/french/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7325496,
+     "sha256": "1482685d8a1a22a7294df650f61293bab353445710e26a60ae057cbf4ad85221"
+    },
+    "lola": {
+     "path": "languages/french/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5457720,
+     "sha256": "751ff3e4cf0a917cf520e8ece16960d588b350b2dcb7463ce5c2ea1d4ee1666a"
+    },
+    "mary": {
+     "path": "languages/french/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5949240,
+     "sha256": "8d5d4f03bce7660da0ea81d96f8a0ea0913685b21fbbbd7bba714242822368dc"
+    },
+    "vera": {
+     "path": "languages/french/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6686520,
+     "sha256": "dca0db2aa7d5e63dab39a1826f7a4833b6852057eebb1ce21f4cd0945dce9870"
+    },
+    "bill_boerst": {
+     "path": "languages/french/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6539064,
+     "sha256": "acf6b6911e12f9e46b35971cdefb5d2a63b9308834a06477b2cc22ec4003ee61"
+    },
+    "charles": {
+     "path": "languages/french/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6195000,
+     "sha256": "956942f32745023f512ca99a45514648c8bbf4a4edc5bb5fdcb7c1a5dd5fbf97"
+    },
+    "daan": {
+     "path": "languages/french/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3884848,
+     "sha256": "2b0282b9597ed5938b8c3f454198e7d491330b07d1514db6db903de71c937c5d"
+    },
+    "george": {
+     "path": "languages/french/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5900088,
+     "sha256": "b7513caf686418ec303dfd87dc6ddbcc020df9bf5964cb4afcd0b72b602afa6f"
+    },
+    "giovanni": {
+     "path": "languages/french/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4130608,
+     "sha256": "b43d37b9ac7c48cb47d7d4bb5b320635b31d4e9d2ff036453414f634305c7896"
+    },
+    "javert": {
+     "path": "languages/french/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "de53da3263a749289bfed884faab4aba87541133828af506412f88becd3adbc1"
+    },
+    "marius": {
+     "path": "languages/french/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "f2b741148f2bc01f617e0aedfc5767f477b150b36f98490fa49f8ed0a39556fd"
+    },
+    "michael": {
+     "path": "languages/french/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7128888,
+     "sha256": "7dc7c44c71e514fcec8203a310676c410b3a68280dd52f6d60c424d51a8b638a"
+    },
+    "paul": {
+     "path": "languages/french/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6833976,
+     "sha256": "85d2f623d5de93dbc33b56f7cbdb90bfaf100c1a7a0958848326223bc7cda5ed"
+    },
+    "peter_yearsley": {
+     "path": "languages/french/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639088,
+     "sha256": "ecd54a21b65e9d94964756421b0b2d2742be3075409aeb52806da2ea15b90880"
+    },
+    "stuart_bell": {
+     "path": "languages/french/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "7d5442a128569a5e81e20e1e43866a7773b989438ee2e0f7e2f0a7904672944d"
+    }
+   }
+  },
+  "german": {
+   "config": "weights_path: {weights}\n\nremove_semicolons: true\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n  '—': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 6\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/german/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 219029196,
+    "sha256": "9fe42605604832349e3f495177bde56b77ae8fee73b2ed4b63236092ccde7621"
+   },
+   "tokenizer": {
+    "path": "languages/german/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 245966,
+    "sha256": "2d77849811e3d1b6ae80e5b11b203f57e1847901104d8a0573b34f46f8dddb53"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/german/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "e34da39d613abe74a8a255426c816738372f085a83604c0c441845d7ae6c8192"
+    },
+    "anna": {
+     "path": "languages/german/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7620408,
+     "sha256": "54e036b70a09478ed11a5108c1e651c6d59ddd63db8191ad9b8264c0cc0d677e"
+    },
+    "azelma": {
+     "path": "languages/german/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7178040,
+     "sha256": "0df5e6ab44f1adccd6717ddac4444a8a82e25bb9b2ef98c73aa20fd033cf87cb"
+    },
+    "caro_davy": {
+     "path": "languages/german/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "1f19753a2d06366db2dc261bf9026f582836cde579fea9857a21e9f28c474362"
+    },
+    "eponine": {
+     "path": "languages/german/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6932280,
+     "sha256": "73cddc2c86df453d4a0d8be05814a9e9d8c050be03cf2ce8bd9df0624c4c8a57"
+    },
+    "estelle": {
+     "path": "languages/german/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7571256,
+     "sha256": "ea90dd538585661872343983fdf5ccff64e0013d749675d7dff81fcfe4dbe747"
+    },
+    "eve": {
+     "path": "languages/german/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "de30237de9ab96251ca7d73746f1ecc8184b91b8f025f8c06096f7a33afe7bbf"
+    },
+    "fantine": {
+     "path": "languages/german/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6440760,
+     "sha256": "b77367001a30d0862e83741f19ba9263870d882310e19a0cac3ba8befe406b04"
+    },
+    "jane": {
+     "path": "languages/german/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7325496,
+     "sha256": "bd1bc91fd38a724b14f5c9cb4d67327f968568beb28d72fe7bb81f0fba75b685"
+    },
+    "lola": {
+     "path": "languages/german/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5457720,
+     "sha256": "66466f5601e1420824a7f5bb852c8807532d38cd8e29002e936b98bfb0e59a24"
+    },
+    "mary": {
+     "path": "languages/german/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5949240,
+     "sha256": "aa2f706eeed7ff410778b3e23070b8f6dd27c27460b76cdd1baef4f7d7d61da5"
+    },
+    "vera": {
+     "path": "languages/german/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6686520,
+     "sha256": "b3e44170a5a4fa97ecdabaac23706cc06e03bd3e9c0492b2aa43582c6cdc18cc"
+    },
+    "bill_boerst": {
+     "path": "languages/german/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6539064,
+     "sha256": "15c4f662fdd05a1d379a589466ce31a4fa34ebdec9a3e9d94ec6ef5d8a1efbd1"
+    },
+    "charles": {
+     "path": "languages/german/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6195000,
+     "sha256": "81199ad1a12f63dc2d47df1da3c55ca010cfe9e222ddffbeea056c372450af0b"
+    },
+    "daan": {
+     "path": "languages/german/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3884848,
+     "sha256": "1ab0faf983edda0f314db4c843e162858b7f424fe530ec93e7d78379ab3c8b6b"
+    },
+    "george": {
+     "path": "languages/german/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5900088,
+     "sha256": "a6c1a5b927b8481dbac08beada45f00b478716aeaf81f080f98c6ba04e65c12b"
+    },
+    "giovanni": {
+     "path": "languages/german/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4130608,
+     "sha256": "479b21d57d3fc2d0d6350ecdd265950f7fe7845c1a3da38dbc40414930a1c649"
+    },
+    "javert": {
+     "path": "languages/german/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "c6ed2465f41a015d78c4dee4be1d4a517e25db3cb43e944e27f984e70006822f"
+    },
+    "marius": {
+     "path": "languages/german/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "1919d2fed89aa8f894753569fe15079f20abc4c9859ed9da889c8b282b244449"
+    },
+    "michael": {
+     "path": "languages/german/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7128888,
+     "sha256": "cf14510456e4a0047160f052ccaa35a24b012eddf260b593b64dfa9fa1fe6d73"
+    },
+    "paul": {
+     "path": "languages/german/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6833976,
+     "sha256": "3b4afcddd3c88a4daa3a19a8e3d84a1c08cb06483442d3623d10bd00bdbe9bf5"
+    },
+    "peter_yearsley": {
+     "path": "languages/german/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639088,
+     "sha256": "50360c335454f22bb80353e83070f33ccb08d7223449855f4078a3ebce6ca70d"
+    },
+    "stuart_bell": {
+     "path": "languages/german/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "60062fc7b9f52bcdf7cfdfc574abb84e476595979283bdadfcd53cf6b5b3e384"
+    }
+   }
+  },
+  "portuguese": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 6\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/portuguese/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 219029196,
+    "sha256": "28e20f32515ba8bd0eaec69671f11f8921414fcdc375aa072fa09f46cc1057c5"
+   },
+   "tokenizer": {
+    "path": "languages/portuguese/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 247014,
+    "sha256": "b33e269f7f042a763080d71ba087d74d2f6759674b238a723c028e436b1a25ab"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/portuguese/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "494d52b7f3b91ed4ff3dec90b44a7f985194485cf5c46cf903867ae8fdc6d2aa"
+    },
+    "anna": {
+     "path": "languages/portuguese/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7620408,
+     "sha256": "6933387edee7aee630834fe2e8bd40a4bf73b5e364da997388fd5de1cb8f5b5d"
+    },
+    "azelma": {
+     "path": "languages/portuguese/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7178040,
+     "sha256": "8b26e719afe49fda3c6b1a23aa1e11e1c842c466ec83f83df016df2f12155270"
+    },
+    "caro_davy": {
+     "path": "languages/portuguese/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "1c6ad7eb3746121912edda71d26e411f4a3150c0080c07147bccf07e84765df2"
+    },
+    "eponine": {
+     "path": "languages/portuguese/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6932280,
+     "sha256": "bf074c83a0741555e28abd3a6ad7fb195a90bdeae1d18b4f414ac43077cf46bc"
+    },
+    "estelle": {
+     "path": "languages/portuguese/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7571256,
+     "sha256": "3272dfb763dab2f834357b583c603654ac6752a916fb47253c7a186591525e63"
+    },
+    "eve": {
+     "path": "languages/portuguese/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "86840ca3163b6050212ff37e9048575581aff75b74fb40d74ae2f52e6366fc7a"
+    },
+    "fantine": {
+     "path": "languages/portuguese/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6440760,
+     "sha256": "0934eabaa5fa5fe12535614c136bf4d073d4fe1085124495b4866011a02b4a11"
+    },
+    "jane": {
+     "path": "languages/portuguese/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7325496,
+     "sha256": "161d4cc6b023d20207220d3687e42d41847c1f823956062646b0c9e22705805e"
+    },
+    "lola": {
+     "path": "languages/portuguese/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5457720,
+     "sha256": "0169b537f8a562907eacba75bfa35ce645fa88f9f2e7da3b29aa35af8ac10bad"
+    },
+    "mary": {
+     "path": "languages/portuguese/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5949240,
+     "sha256": "148e07e6297293af34ea09bcbe2039eb703060c6650122f7de1dd116d4a94226"
+    },
+    "vera": {
+     "path": "languages/portuguese/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6686520,
+     "sha256": "8f802122e2970eb3ae7f193ba3b6604f8da3cc4d59f932e5b30a6fae995dfdeb"
+    },
+    "bill_boerst": {
+     "path": "languages/portuguese/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6539064,
+     "sha256": "955d3ddd5455ecde43fbf92bbb48d90a6c50ddce4cacd369cb20dab002abaa0c"
+    },
+    "charles": {
+     "path": "languages/portuguese/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6195000,
+     "sha256": "26654297467c0a3541a37c8e64be9cbad7a78d86bc8f8b51e58874e7eecfd800"
+    },
+    "daan": {
+     "path": "languages/portuguese/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3884848,
+     "sha256": "4d23f588aa628e969db64478d82a0b0186e4805466fd97a78b3a772d00cf9f69"
+    },
+    "george": {
+     "path": "languages/portuguese/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5900088,
+     "sha256": "8e37c8fd8839aab501bdc0c30c8e4d37996e62fb66c063d3e54c80c98b4b6ea5"
+    },
+    "giovanni": {
+     "path": "languages/portuguese/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4130608,
+     "sha256": "8ef09c84eea9f9b8a6fbea92518815514a09f59cc63a8bb1273ac67ef00e3b73"
+    },
+    "javert": {
+     "path": "languages/portuguese/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "1c8cb25be8928811ab7632a0a915f88ef52d05447352ac5d9fee679b62715224"
+    },
+    "marius": {
+     "path": "languages/portuguese/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "9f6cc305d08f6652aa15ff0ac17c216bcd17a3fe50432afc0bcab6cd4573cbdd"
+    },
+    "michael": {
+     "path": "languages/portuguese/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7128888,
+     "sha256": "07b19d1897d626a8456a9c58e76461bb8d21289f42b594b9c05ec7b4091cb8b2"
+    },
+    "paul": {
+     "path": "languages/portuguese/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6833976,
+     "sha256": "08c2e7e31b232866c124c312af8e34daf35e867782b2cd5271fde4b4b3c79002"
+    },
+    "peter_yearsley": {
+     "path": "languages/portuguese/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639088,
+     "sha256": "dbbaf9f0f8f352ca95d7817d49343c5af7d1fc76855e9be8ab7bda398d78fcaf"
+    },
+    "stuart_bell": {
+     "path": "languages/portuguese/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "5a6ce1b11af8d644e81f0daae1a77b463316abd565468cb7424bd28172cd77e7"
+    }
+   }
+  },
+  "italian": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 6\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/italian/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 219029196,
+    "sha256": "16365c43eaabee9b222cd414d6a48f0976b4800a21fe5d55253f645eff7eeb1f"
+   },
+   "tokenizer": {
+    "path": "languages/italian/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 246586,
+    "sha256": "4bc1c0d4d54f9480183e94c94cfabf74fd89b0912537d4ef607d1982c4a381ec"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/italian/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "259cc88884106f291c7bbff3139da1cc55bd1cdf57e7c988dcbd35818b35e105"
+    },
+    "anna": {
+     "path": "languages/italian/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7620408,
+     "sha256": "d980145802244a61136c4221b3b9a97935ce914e23c18c866df9446b77b8dbde"
+    },
+    "azelma": {
+     "path": "languages/italian/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7178040,
+     "sha256": "8a1e0b615b9761f2665d4af6f9f8c5677d8527b15d7dc20829fa50157dac5fbe"
+    },
+    "caro_davy": {
+     "path": "languages/italian/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "58817a09c7caf0febddef1780111326f3d80fbc26e0ad585f7a033b09f208acf"
+    },
+    "eponine": {
+     "path": "languages/italian/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6932280,
+     "sha256": "c199f2a04f4c101ebe573b7c978c47cdf2c8c626a5539cb73fda6c5a8b385a8f"
+    },
+    "estelle": {
+     "path": "languages/italian/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7571256,
+     "sha256": "1c687bac16e3e1d0911c633c528728a6544a17ec6125697b61d7a517a7533f85"
+    },
+    "eve": {
+     "path": "languages/italian/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "19bf7611b446437d8b134060f2f8256739f4c14b07dd289c531edc6811a4d330"
+    },
+    "fantine": {
+     "path": "languages/italian/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6440760,
+     "sha256": "f7d900d34f3d4709ea3138d74a5d31956a0d78f7395b9fe1e758d754402622ed"
+    },
+    "jane": {
+     "path": "languages/italian/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7325496,
+     "sha256": "b9787a3a8e3d3e608c493bd24ec2880fe65717807f938a8c1565c126590acdc4"
+    },
+    "lola": {
+     "path": "languages/italian/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5457720,
+     "sha256": "69ce023d783aec45a17adc8aa5ea3716d35b617aba42f7deae12f7b039dc90f1"
+    },
+    "mary": {
+     "path": "languages/italian/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5949240,
+     "sha256": "1204c4898ccc02a91f9d1d560d99ff12617be985313583202c4e49c4cf0386be"
+    },
+    "vera": {
+     "path": "languages/italian/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6686520,
+     "sha256": "54f01613af6cf8ae4e9896f3a31207ccd3535b0e2f12db94591ed1423bac855a"
+    },
+    "bill_boerst": {
+     "path": "languages/italian/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6539064,
+     "sha256": "5aa040787c4d22ca349dbf4b6ccf1f664a9bf5ee12cf51b436ec73721d715ed9"
+    },
+    "charles": {
+     "path": "languages/italian/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6195000,
+     "sha256": "44d15fcbd75a80db6b73da991f57f5b0e581fabaa24d5d09b552866dacb2204a"
+    },
+    "daan": {
+     "path": "languages/italian/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3884848,
+     "sha256": "dd2b8bf5f6540652fb51c81bb32c8b48a2c7c3a440fc182383445fcea281ec99"
+    },
+    "george": {
+     "path": "languages/italian/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5900088,
+     "sha256": "14bfdfb5dbdc9ffab3eb457489aa60d586aaaa87fb381db10c598ca4b60b3a98"
+    },
+    "giovanni": {
+     "path": "languages/italian/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4130608,
+     "sha256": "5cede7852c7076f611750e4a8d3c95d19c6386852abc55940b3279f775fc5f9b"
+    },
+    "javert": {
+     "path": "languages/italian/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "9e2bfcc88a8c7b3b364b955376cecf1ddffdfd3c9974aa318bcd817343c9b521"
+    },
+    "marius": {
+     "path": "languages/italian/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "f0ff88d23b2afb0f6ecb8f028b1c616a71295531a867746eb5a39561520b1cd9"
+    },
+    "michael": {
+     "path": "languages/italian/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7128888,
+     "sha256": "fcb8bcbfe18f9875f2aa6c5d404972f7e46f9a9e155ecf88967d82cbc53dd143"
+    },
+    "paul": {
+     "path": "languages/italian/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6833976,
+     "sha256": "a98133aa0a75c221026e97cf7f6368f248301905f75fdcf6e4ccd79f6ae57139"
+    },
+    "peter_yearsley": {
+     "path": "languages/italian/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639088,
+     "sha256": "1dce605726cfe85afa3ff0123011644e8ffcc8f02a58199c8606642a2c4698a0"
+    },
+    "stuart_bell": {
+     "path": "languages/italian/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "ec0b8709bde934e65be2b2ebb791170ec2e5914012a1bf478e802d873ec41495"
+    }
+   }
+  },
+  "spanish": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '¡': ''\n  '¿': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 6\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/spanish/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 219029196,
+    "sha256": "c4988ff376692f2ab1e85b17350755b08f16e49c0b5f0de8b271efa9abd71de7"
+   },
+   "tokenizer": {
+    "path": "languages/spanish/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 246610,
+    "sha256": "9ade09bbdc64ab2b59952b90773fa0890b780ece4fd5aef0d36a00c6ad5f0531"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/spanish/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "3054baa9d54a47667ff333a95f4d3ed9dc7d31ada1fe99cee334d2bb6f1a5029"
+    },
+    "anna": {
+     "path": "languages/spanish/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7620408,
+     "sha256": "1a8b159d01e983321c8be53b9acfcf66fe069ac9b03e5432043972ebc8bd36f3"
+    },
+    "azelma": {
+     "path": "languages/spanish/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7178040,
+     "sha256": "acd979cb34fc704a50c57abb222adca6cd99e524e1385e8ebe4b3ad607efd5cd"
+    },
+    "caro_davy": {
+     "path": "languages/spanish/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "902c51bc924990679b291ada1f1d8062e1d99de99611070012edcffba20b9500"
+    },
+    "eponine": {
+     "path": "languages/spanish/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6932280,
+     "sha256": "be444e3b6fb51e70d8cb8df09c8e3905e3f3c1006fb139532f2b67d1bbc5774c"
+    },
+    "estelle": {
+     "path": "languages/spanish/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7571256,
+     "sha256": "ea11513a9654bc2fdd460328eb54ae4de389eb192744e9e5ca06fd3d2c4832cf"
+    },
+    "eve": {
+     "path": "languages/spanish/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "034a2fb66ce02cb19a246f64d0f5a1c4a3a04688b067fa6ba3c7e61b5c15dab0"
+    },
+    "fantine": {
+     "path": "languages/spanish/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6440760,
+     "sha256": "3156e3afa0457d0ab3f7440b9eb59bc3c41b19392652e6dca402367e2a7b6f79"
+    },
+    "jane": {
+     "path": "languages/spanish/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7325496,
+     "sha256": "a1f1c36c155e84da0bce58d635128059413e618324d47f9679aa012d8bdeb9a0"
+    },
+    "lola": {
+     "path": "languages/spanish/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5457720,
+     "sha256": "967b8f08639345ff5ad1a912a5542fe421518c3f80b87d52078c6726348ab1e7"
+    },
+    "mary": {
+     "path": "languages/spanish/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5949240,
+     "sha256": "b2175122cc79a6e54ff0b347bf6f942f59e6d50c20d8e60ad0baa708e030164f"
+    },
+    "vera": {
+     "path": "languages/spanish/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6686520,
+     "sha256": "5c6000c09ee493cd14d84051c5e6f09ce0afd5907d9b79ff840d00636c335a56"
+    },
+    "bill_boerst": {
+     "path": "languages/spanish/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6539064,
+     "sha256": "c31f843c7ed974e16d13a2a6af5936db04b3088557b5d6d539248a4828c1c792"
+    },
+    "charles": {
+     "path": "languages/spanish/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6195000,
+     "sha256": "e3571dae96c2a1fdac148a1c474ae48f4b1fcd696dabbaa753d64514c294ef3c"
+    },
+    "daan": {
+     "path": "languages/spanish/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3884848,
+     "sha256": "230535e6bd094a3c13fac333642f6b9369512443fb3b8b646c8925f1ca920547"
+    },
+    "george": {
+     "path": "languages/spanish/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5900088,
+     "sha256": "8b5557373a1089c736b417871d64562b113a71d132b0b831c98cf4f0a391f4ce"
+    },
+    "giovanni": {
+     "path": "languages/spanish/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4130608,
+     "sha256": "3f4b9e1779eeb65311494e6571a024725d8e2027ebd43b4dc924c11f347b86be"
+    },
+    "javert": {
+     "path": "languages/spanish/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "0022eeb8632f0124df59701fcf76e394f1f50c83a5926044264639a46869fb2f"
+    },
+    "marius": {
+     "path": "languages/spanish/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "9f5efb293cb02ffe40e8ae8e54633a30c5cc00dd67081d0031d4358131c48b1e"
+    },
+    "michael": {
+     "path": "languages/spanish/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7128888,
+     "sha256": "3512b08d2594526394297c018ecf5cd78995adbae15160b71ce6f1cc2f75642a"
+    },
+    "paul": {
+     "path": "languages/spanish/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6833976,
+     "sha256": "f12174f23762f26ca8808bc438273c709d851cffebf3338ee1c7361233f881f1"
+    },
+    "peter_yearsley": {
+     "path": "languages/spanish/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639088,
+     "sha256": "7520b713d83595c2f7492d46562c7b03721befef81848c0c002b565c575a0d5c"
+    },
+    "stuart_bell": {
+     "path": "languages/spanish/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "ad7aa629e9be2f9b8f09abb1ce48cf3468f625b048ca7fd3e2204db04926507b"
+    }
+   }
+  },
+  "dutch": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 6\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/dutch/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 219029196,
+    "sha256": "59b5c3249ab05e8b5fcb0a296e9b0cb0c0a20da5e1fd28c04bb90b2175612aeb"
+   },
+   "tokenizer": {
+    "path": "languages/dutch/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 245206,
+    "sha256": "e6f610b98c427641b4ab0e1024dca7843e3d6b620871a14b204932e42c5a1736"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/dutch/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "97382de7d9265cd3cbeb54dab54dd8b3db8e24bc12bdc540ac971be10f5e161a"
+    },
+    "anna": {
+     "path": "languages/dutch/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7620408,
+     "sha256": "ed10d118e1f2518b035ba01e8c2ed587cd4e0463c391038a067414f85d530494"
+    },
+    "azelma": {
+     "path": "languages/dutch/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7178040,
+     "sha256": "b8a7ef6d1584ca3d0d329c6fc77efeb07c09ae9e51de871db2e98373699b80f9"
+    },
+    "caro_davy": {
+     "path": "languages/dutch/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "4d7adabad1d66687c1dc59df2de36786da76827511941a4726a0219f6c2d11de"
+    },
+    "eponine": {
+     "path": "languages/dutch/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6932280,
+     "sha256": "c676647359421a79929ab7dce87ecfb5a475d1b153aacbe5fd8e7c2b1b7e6375"
+    },
+    "estelle": {
+     "path": "languages/dutch/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7571256,
+     "sha256": "c2f8d01e4b710d45b5c9da236d72540e1890c59ff09f0ac8907af6a43b2c28b3"
+    },
+    "eve": {
+     "path": "languages/dutch/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "62ee832066e869fa890baa300270b3dcdd2d21e0e3aeba7da9335a3f61d0d7c9"
+    },
+    "fantine": {
+     "path": "languages/dutch/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6440760,
+     "sha256": "432e93e52dd344c22b8ddc7542976cb1f271b1848d1f1a213eff31081c4bc795"
+    },
+    "jane": {
+     "path": "languages/dutch/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7325496,
+     "sha256": "36816d4767fe69a67eeb4d9778c71eea272f34d99d63c2af8c47cf772339b5c1"
+    },
+    "lola": {
+     "path": "languages/dutch/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5457720,
+     "sha256": "51f636257ed49587590608426cd77c91eef2bbbfa2c622d80c91291ecb8f376c"
+    },
+    "mary": {
+     "path": "languages/dutch/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5949240,
+     "sha256": "735421530482aa9376185e2e303af8d50d58595e90f98d0788c0d910f8e60bcd"
+    },
+    "vera": {
+     "path": "languages/dutch/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6686520,
+     "sha256": "b55621ad1fe1b361c199fea23a7f23b1b75b59996251805f6d14f445c2b5f104"
+    },
+    "bill_boerst": {
+     "path": "languages/dutch/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6539064,
+     "sha256": "3ba8d3197deab64a1be4753aff4b55ba7032fa053ca7238ecdf962c6caa1dacf"
+    },
+    "charles": {
+     "path": "languages/dutch/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6195000,
+     "sha256": "d7dfd18871ba1606420ac794b4eabb9d9f8ac6eebe79c4e3445810a4aa7e4248"
+    },
+    "daan": {
+     "path": "languages/dutch/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3884848,
+     "sha256": "be6b053e504c8345a9832c1e3676f539304a2921c416b7140ec5ebb5f95016c4"
+    },
+    "george": {
+     "path": "languages/dutch/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5900088,
+     "sha256": "b988fd6b951b7dda0dbb08f71ce7f14cb4388854bd38c060a878284f86a3e79a"
+    },
+    "giovanni": {
+     "path": "languages/dutch/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4130608,
+     "sha256": "35e65bbb455b97e0d1e969bce58918cf23983095ddaf9c7a09d6f8db2d7dfbaa"
+    },
+    "javert": {
+     "path": "languages/dutch/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6145848,
+     "sha256": "2bd02cf08f303a2cb42b59eb61c9ef59106b67cec00d317123a329b1c0100f96"
+    },
+    "marius": {
+     "path": "languages/dutch/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6244152,
+     "sha256": "415745f5dfc458eff2bd9eaffbe334a508e25feb90370a06c5ef65d873aef9af"
+    },
+    "michael": {
+     "path": "languages/dutch/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 7128888,
+     "sha256": "4d2c7be46735a8c0d56b2995df4a25edd5185a0e678dc9ddd27ac0cff66e4b80"
+    },
+    "paul": {
+     "path": "languages/dutch/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 6833976,
+     "sha256": "494c28306fe00a79225a2a7967dc236f734c1f69d2bbe27f4911e55e44c355ee"
+    },
+    "peter_yearsley": {
+     "path": "languages/dutch/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639088,
+     "sha256": "6f6d99b59d97a37e6ad6591f09d80e358519f9a8b0c7507d419bde4aa93eaac9"
+    },
+    "stuart_bell": {
+     "path": "languages/dutch/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5064504,
+     "sha256": "2245b79ca7242a055ef42c9772efe6619fa6a0086812233279f903b0b2a4cb3c"
+    }
+   }
+  },
+  "french_24l": {
+   "config": "weights_path: {weights}\n\nremove_semicolons: true\n# Replace characters that are absent from the training data.\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': \"'\"\n  '‘': \"'\"\n  ':': ','\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 24\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/french_24l/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 672178676,
+    "sha256": "f1d2ac7f063b54b08f8fef5a6c10cd38bc10c3768adaab8c56ab7f7d411ac6e4"
+   },
+   "tokenizer": {
+    "path": "languages/french_24l/tokenizer.json",
+    "revision": "8843db76457a91db32077edf8dfcd1c0e3e755fd",
+    "size": 246403,
+    "sha256": "6211acffe9cb95172f71f0051f18e26ea305b2b32ea00b331ee976551c70887f"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/french_24l/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "bb8d708e00d777bd44861ad28edb3fe00f3205ccb113704e0fd9870a578f5387"
+    },
+    "anna": {
+     "path": "languages/french_24l/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30481760,
+     "sha256": "d296b13111b7c6bdc6ba03a38ae0424c34e2c6432f8ed9d772f5c8509752eb09"
+    },
+    "azelma": {
+     "path": "languages/french_24l/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28712288,
+     "sha256": "ee78f2c9ce2025b6720ed72a46dfe1468f5dc7a76c024154ab6cc7e213b0cd43"
+    },
+    "caro_davy": {
+     "path": "languages/french_24l/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "13998862582950dcac2f211d08a1f5798b65367569caa2b5e5b9d869e223e4f1"
+    },
+    "eponine": {
+     "path": "languages/french_24l/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27729248,
+     "sha256": "38d4eaadfb582b84b9cd2cba54341dccb63a926db4427cc9e93aca413c26b33a"
+    },
+    "estelle": {
+     "path": "languages/french_24l/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30285152,
+     "sha256": "67e6a77965ff80c91755f29319521069ee3f41e70753afd1a64d7a35b54f48af"
+    },
+    "eve": {
+     "path": "languages/french_24l/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "4c83e0cc5873de73bc80d73fd1e61fc66407d05864471aa009daadb7d7fcaeeb"
+    },
+    "fantine": {
+     "path": "languages/french_24l/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 25763160,
+     "sha256": "3214baeae7a957c05063a04957bb23fee45c1761ca967451f0453d4d7cfd31ab"
+    },
+    "jane": {
+     "path": "languages/french_24l/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 29302112,
+     "sha256": "50966dedc66c214aa3aeabafc0447e348505165eea196258ae5792a7316b1db6"
+    },
+    "lola": {
+     "path": "languages/french_24l/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 21831000,
+     "sha256": "7e69c2618c1a5f671a2a226392c99012aca11ba592ef74d53adbdf350d3a1f9f"
+    },
+    "mary": {
+     "path": "languages/french_24l/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23797080,
+     "sha256": "4cc65e735b683ac0481e36e5bac6f2ea386929d3e424db97604bff444d2561ad"
+    },
+    "vera": {
+     "path": "languages/french_24l/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26746208,
+     "sha256": "7e7100f86bca8595b2cf5d42357d3cb563364e97e0038f8668ed6078e8ea71df"
+    },
+    "bill_boerst": {
+     "path": "languages/french_24l/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26156376,
+     "sha256": "44d9b4afe8b4e490816015832f4306a6a05a9be1f461b62e858651aa7386eb54"
+    },
+    "charles": {
+     "path": "languages/french_24l/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24780120,
+     "sha256": "38bbe043051d15f78d7a11f583d5186b68229abeb8ea767ac212d8faf1e1f010"
+    },
+    "daan": {
+     "path": "languages/french_24l/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 15539512,
+     "sha256": "60f57792f1422be7abb892627aa5ab04323583874d89b6acb008ce9c3e724dc6"
+    },
+    "george": {
+     "path": "languages/french_24l/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23600472,
+     "sha256": "12e99f90631aeabf0c964c856610a2cdf475a87f332c9e52465cf1f372502fcc"
+    },
+    "giovanni": {
+     "path": "languages/french_24l/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 16522552,
+     "sha256": "4ea0f16351819cc04ae15b1c346f184d2effc0e40128ee538988b755f8054c66"
+    },
+    "javert": {
+     "path": "languages/french_24l/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "6c30f034e620ded18587db9d7cf0c6e7d1b5c61b4088d1a207c3d8565052d698"
+    },
+    "marius": {
+     "path": "languages/french_24l/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "c463c3348fceb508711d94ff5010c318b121ea8aba0f54b5f54ed0fc144a6850"
+    },
+    "michael": {
+     "path": "languages/french_24l/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28515680,
+     "sha256": "2adc7994ad3fb6996665b14f1b7a01fc20092c7b6e559b0b5a2aaffd6e8af25e"
+    },
+    "paul": {
+     "path": "languages/french_24l/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27336032,
+     "sha256": "efe89bf38ecf9f3b4a6fe3b44a1c1eb89e31c4fc0e33d75b6b2ecd61f0df40c8"
+    },
+    "peter_yearsley": {
+     "path": "languages/french_24l/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 14556464,
+     "sha256": "efe9d2db1c290fa7b901fc686f117bf0c0d96df875f421f5f13916c94326fbf2"
+    },
+    "stuart_bell": {
+     "path": "languages/french_24l/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "f51c99d00a901d76838b54c12ebb4e01f2e72063614740bb6b074e6faaae99b4"
+    }
+   }
+  },
+  "german_24l": {
+   "config": "weights_path: {weights}\n\nremove_semicolons: true\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n  '—': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 24\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/german_24l/model.safetensors",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 672178676,
+    "sha256": "78d0155b017a6d1222989af521c60d7df5b4a179fa70ef65ce0379b5a1a59312"
+   },
+   "tokenizer": {
+    "path": "languages/german_24l/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 245966,
+    "sha256": "2d77849811e3d1b6ae80e5b11b203f57e1847901104d8a0573b34f46f8dddb53"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/german_24l/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "d625caeb4cf50dc6b16239801a92e437a4fbcd5f85026c3206a5eb90c56db583"
+    },
+    "anna": {
+     "path": "languages/german_24l/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30481760,
+     "sha256": "331272c9027cac45762a152832178d8963e411849d13dc4f235c76d421202e24"
+    },
+    "azelma": {
+     "path": "languages/german_24l/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28712288,
+     "sha256": "ff254408cd713f0e518f11899a79a4ccde58b04e30dbf7e4cf4d5caecef1da24"
+    },
+    "caro_davy": {
+     "path": "languages/german_24l/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "19cf2360ffcd67cd68a9ada5105b4ffc697cc61d4df6542a6be6e65b3d02dd18"
+    },
+    "eponine": {
+     "path": "languages/german_24l/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27729248,
+     "sha256": "91caf7f5984097a4c68a816d6005450cac342b33ee6e633e9e494c505c58ef74"
+    },
+    "estelle": {
+     "path": "languages/german_24l/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30285152,
+     "sha256": "a9bf861ee468ff0e78cc7103afb14e472b4260e112f180a165fee419561d463a"
+    },
+    "eve": {
+     "path": "languages/german_24l/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "b734cfed90bfb86494f7f892b219bf9c85be1bc7dd3dde1ac6b997cd2a69cba7"
+    },
+    "fantine": {
+     "path": "languages/german_24l/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 25763160,
+     "sha256": "20aa560b847646490af3958a25740e57cee891155702bcfa04569edffcc193cf"
+    },
+    "jane": {
+     "path": "languages/german_24l/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 29302112,
+     "sha256": "e159b02199a76e44623fd8e7a80f59ae6c0ada1af1cc30dff2f8aa45ea0f66c6"
+    },
+    "lola": {
+     "path": "languages/german_24l/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 21831000,
+     "sha256": "70a6af6d2c48a0f3fcc89248a344744ecb366ad3f48a4459bca593de9c5d1fed"
+    },
+    "mary": {
+     "path": "languages/german_24l/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23797080,
+     "sha256": "7334fc1c997b77344f5d134d5b1182b801d46f26158d066cb4a47b6398a20391"
+    },
+    "vera": {
+     "path": "languages/german_24l/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26746208,
+     "sha256": "98dcdff9f51b6e8e087121dcb586ce9466637b4fd4708cb3834f19af58959abe"
+    },
+    "bill_boerst": {
+     "path": "languages/german_24l/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26156376,
+     "sha256": "f1a0b36a39c8fb34cf9674552953934c0410ba1242f4b6ef9a7f6cd253729230"
+    },
+    "charles": {
+     "path": "languages/german_24l/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24780120,
+     "sha256": "af523af0bbc1e6f8c87ec4385f245adaf79b0d603a00c01da6b1de6987d8aa83"
+    },
+    "daan": {
+     "path": "languages/german_24l/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 15539512,
+     "sha256": "1288dfd1e431701d899832df20ad77beb7bd17cc5451057124d665d9ac054eaa"
+    },
+    "george": {
+     "path": "languages/german_24l/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23600472,
+     "sha256": "5a75006ce98936656c66d0450978ed20c44da5d26ad1674613faa6ed7d685531"
+    },
+    "giovanni": {
+     "path": "languages/german_24l/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 16522552,
+     "sha256": "307ec45b35f38b84a9ac3792cbabeb3b2dfd97b7c75fd7565f98d5789d5f4308"
+    },
+    "javert": {
+     "path": "languages/german_24l/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "ad3f3cc68cd7e22a062559eeffcb4b0006aac63e89ac31cb815a9405d7ccdae3"
+    },
+    "marius": {
+     "path": "languages/german_24l/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "ed4c2ae81d3bd9775fb3acea73600a26b8ce7f3a438fd35bea5071a3d18eec2f"
+    },
+    "michael": {
+     "path": "languages/german_24l/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28515680,
+     "sha256": "3275ac3995f71261c13b114dd1ef57565982020638281778125428336d1d3896"
+    },
+    "paul": {
+     "path": "languages/german_24l/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27336032,
+     "sha256": "fd84ba4049bf2f6da4d2c11580527789c912a0d06fee2ed88f356ed584cc6d52"
+    },
+    "peter_yearsley": {
+     "path": "languages/german_24l/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 14556464,
+     "sha256": "d8e6b03a3bb44b94fba94291f8ab59604bb2d50453ef29a0b85950beae1b27f7"
+    },
+    "stuart_bell": {
+     "path": "languages/german_24l/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "e844be6174d18fb8b4f098b44b7005bd1700146923dee4c4630fe977904e227c"
+    }
+   }
+  },
+  "portuguese_24l": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 24\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/portuguese_24l/model.safetensors",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 672178676,
+    "sha256": "ce7911fe914d055e55dcb8dcc973f735d9f51d09fe6fec4fe35d80ac2c9d9670"
+   },
+   "tokenizer": {
+    "path": "languages/portuguese_24l/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 247014,
+    "sha256": "b33e269f7f042a763080d71ba087d74d2f6759674b238a723c028e436b1a25ab"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/portuguese_24l/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "b2c5226cf0cc08311f7213a61919a6238a58035e0ea7195351477bd4e1376018"
+    },
+    "anna": {
+     "path": "languages/portuguese_24l/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30481760,
+     "sha256": "ca4ca4a9f77b4b74315a4ea584792b03aed138af456d1b7dddcbd5d2c4cc4243"
+    },
+    "azelma": {
+     "path": "languages/portuguese_24l/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28712288,
+     "sha256": "e38620a2adcccce23dc61f827a26b2fa2c5b813054823db663ed2e9020d059cc"
+    },
+    "caro_davy": {
+     "path": "languages/portuguese_24l/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "06425f19a40c5546fb8e0e630e7f1165a11d90621815cab1b5b974b0eafe4ddf"
+    },
+    "eponine": {
+     "path": "languages/portuguese_24l/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27729248,
+     "sha256": "ebdbb9cc9fb831e63417306873eb23ae9eca12bf274181427234c48a8b985d17"
+    },
+    "estelle": {
+     "path": "languages/portuguese_24l/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30285152,
+     "sha256": "8e42e3657a6292e3fc5c0a318e1cf151fcf084faa2b1148cab0975494f54bf65"
+    },
+    "eve": {
+     "path": "languages/portuguese_24l/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "7a48ddb121acae875cd2d12f525b5ed7e0b2244adc6bb5b1bd78fec9c401d73b"
+    },
+    "fantine": {
+     "path": "languages/portuguese_24l/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 25763160,
+     "sha256": "31a090e96b8001d239eda188f916a43ba9753070f8eaa65da1dcb872b71944a1"
+    },
+    "jane": {
+     "path": "languages/portuguese_24l/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 29302112,
+     "sha256": "e31042faf099a246303aef0f10dc4a3b2ece3417a3afbdfbcbb2555fd3caed75"
+    },
+    "lola": {
+     "path": "languages/portuguese_24l/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 21831000,
+     "sha256": "7fe59d61a5e2eaff4fd6fc6b36c6496236da6277372985b1649582ba105c7ae9"
+    },
+    "mary": {
+     "path": "languages/portuguese_24l/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23797080,
+     "sha256": "7529e4df44432d1fd2ee62659d86bba2e8b536eacc9cada2ee3a68f1632e4d20"
+    },
+    "vera": {
+     "path": "languages/portuguese_24l/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26746208,
+     "sha256": "bf72dd5a85de2a23d51ef2b0541c4ff0ed09f87708ea92d7068ce5c84ac6aed5"
+    },
+    "bill_boerst": {
+     "path": "languages/portuguese_24l/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26156376,
+     "sha256": "300e9190967911195c564b228e1445d2ac81e4e60a20c3c8b9db687c2c1a14c6"
+    },
+    "charles": {
+     "path": "languages/portuguese_24l/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24780120,
+     "sha256": "9fe91a19e3695c89df60fe91d59bf6f4bcae5bb19b83871e7b5aeecb1f19054f"
+    },
+    "daan": {
+     "path": "languages/portuguese_24l/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 15539512,
+     "sha256": "88bebdf964a9dab0532d5069b66a7629355246e0194d26bac90a33c42e3776b1"
+    },
+    "george": {
+     "path": "languages/portuguese_24l/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23600472,
+     "sha256": "1edd2433779cd4ec0f125864dad8a493f24059e3098ec07290440cc9da654a0a"
+    },
+    "giovanni": {
+     "path": "languages/portuguese_24l/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 16522552,
+     "sha256": "fed44b26c70832e34861f6bbd76e24403a20f31f2d40adc00074b1c7ac24fd8d"
+    },
+    "javert": {
+     "path": "languages/portuguese_24l/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "9001750c6dfb34505b21fad89b204185670abdad94bda1b7cf11ef1fd5b4bfb2"
+    },
+    "marius": {
+     "path": "languages/portuguese_24l/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "b8e6feb59bccdd2b2f661f6b23e1bc0630a8abd717e93c483b94e0ab6657df75"
+    },
+    "michael": {
+     "path": "languages/portuguese_24l/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28515680,
+     "sha256": "1d7f19070f39e643b09c670e13a0447714b12a6307de3df2ceaed4b1bc2806fb"
+    },
+    "paul": {
+     "path": "languages/portuguese_24l/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27336032,
+     "sha256": "d7b917743ae8710bcbe8df8abda9b7bef9a1b86250b41866bd3b7a8653048597"
+    },
+    "peter_yearsley": {
+     "path": "languages/portuguese_24l/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 14556464,
+     "sha256": "0c7f891458a42eae7de5520c547400f5c878c119ca06144be474bc2429c63ecc"
+    },
+    "stuart_bell": {
+     "path": "languages/portuguese_24l/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "6dddd3a29a53d48f7305dcc3e70c66fc6bd0c4d0c7fd739f045a5ca105b2fe57"
+    }
+   }
+  },
+  "italian_24l": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 24\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/italian_24l/model.safetensors",
+    "revision": "1e08e6a23401048648a9fdcfde2f89348215c2a7",
+    "size": 672178676,
+    "sha256": "6a751f14c46c6d623d5bfc105cd816c1b96d37dd4566553032d940187bfd2944"
+   },
+   "tokenizer": {
+    "path": "languages/italian_24l/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 246586,
+    "sha256": "4bc1c0d4d54f9480183e94c94cfabf74fd89b0912537d4ef607d1982c4a381ec"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/italian_24l/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "da86e31f7eddb045153834f67dea33818aa554b0e3e6dea8960ce093d6511219"
+    },
+    "anna": {
+     "path": "languages/italian_24l/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30481760,
+     "sha256": "decec1e0627587dbb574ffe8e4ddd50eadeb746fa17c9ee779a44678db0ae47e"
+    },
+    "azelma": {
+     "path": "languages/italian_24l/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28712288,
+     "sha256": "85e7c771e24cb94d0af58d9e202b8c65213b9f07bcd018fd7fb367aa1a66c83b"
+    },
+    "caro_davy": {
+     "path": "languages/italian_24l/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "21f79e998711b41976d740c66dd2668d7859bed1038f89961d19835a35fb4fcb"
+    },
+    "eponine": {
+     "path": "languages/italian_24l/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27729248,
+     "sha256": "e101b3de303fed3f1bd99eeea010b6d8e21a92c2b6aca18752c07ca4fa70e1cd"
+    },
+    "estelle": {
+     "path": "languages/italian_24l/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30285152,
+     "sha256": "5efebf9626bfc05af7223d36f9332d4065b873c8d3ce1e7d1c66eec74b2d840f"
+    },
+    "eve": {
+     "path": "languages/italian_24l/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "5635abd23ac9536d9cf1e8b4998fe1af35aeacede8feb324bc453f9a2920981c"
+    },
+    "fantine": {
+     "path": "languages/italian_24l/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 25763160,
+     "sha256": "7c7e9d90ecb2100ab4ed357b95749181e5301fdb0a7809a1a7a69c53b8b19d71"
+    },
+    "jane": {
+     "path": "languages/italian_24l/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 29302112,
+     "sha256": "8205fe94e961cdabb964cfb58ea4de9da4772d811c8d0327626c31d8c65d8c4e"
+    },
+    "lola": {
+     "path": "languages/italian_24l/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 21831000,
+     "sha256": "a74fee2b424b42842175aba0f2e65e28824ea2b5beacbd2f8a03ca95feda3543"
+    },
+    "mary": {
+     "path": "languages/italian_24l/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23797080,
+     "sha256": "9b928b552e0759fa634da0b8dda4fc2920d4842bf56c43560278ab4994253dd5"
+    },
+    "vera": {
+     "path": "languages/italian_24l/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26746208,
+     "sha256": "133c5ba285c5aef4973f984f26d3d1153009a8ff4533080b135d3447fd4cf0c1"
+    },
+    "bill_boerst": {
+     "path": "languages/italian_24l/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26156376,
+     "sha256": "1722c450b60d34ef2a8b831d6108d6e6eec868abed2764254883ede639c34149"
+    },
+    "charles": {
+     "path": "languages/italian_24l/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24780120,
+     "sha256": "ac5a392b140e369f30fe80ba9928dc749f07da207eb3c8f542ded4cc52bd4a16"
+    },
+    "daan": {
+     "path": "languages/italian_24l/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 15539512,
+     "sha256": "c80b266e1b1269b085753eb9522fb669cc34dc16a5517819c68fe7d7c26a2cf5"
+    },
+    "george": {
+     "path": "languages/italian_24l/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23600472,
+     "sha256": "06bc30b189fca3f115072e3d0ee7bbed9fb3b84f0d6162ed2334d4f7515a34a6"
+    },
+    "giovanni": {
+     "path": "languages/italian_24l/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 16522552,
+     "sha256": "5f393cc6b48c14dfacb7f802a02a72f4f5bb06bc8f07c11efc781b2ef68421ae"
+    },
+    "javert": {
+     "path": "languages/italian_24l/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "987cf1ac6c388f8194536236819ae3dc675109d50b04b7ee4b6c6f0c16833070"
+    },
+    "marius": {
+     "path": "languages/italian_24l/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "35f62c102f21e1014e8d1e3f5c3a46f7a21ba06ee5d289025f36d5c108b0f85d"
+    },
+    "michael": {
+     "path": "languages/italian_24l/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28515680,
+     "sha256": "2756f98a8806419b465fe2b99c9cdde8b466fbb694d27cfbde3111a73cc0a2e4"
+    },
+    "paul": {
+     "path": "languages/italian_24l/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27336032,
+     "sha256": "7ab62825e6398618063d851e54db6c99f72c79d235307d85746c2eeb683b429e"
+    },
+    "peter_yearsley": {
+     "path": "languages/italian_24l/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 14556464,
+     "sha256": "76dd430b9520b9516651ac9b193f896162e8cc76bd2dc3367e9024b135bd6220"
+    },
+    "stuart_bell": {
+     "path": "languages/italian_24l/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "ea7c9ac1f7349340062d3afbe4352e79dd9d631c73d1d1a46661fb5f94f9dd92"
+    }
+   }
+  },
+  "spanish_24l": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '¡': ''\n  '¿': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 24\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/spanish_24l/model.safetensors",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 672178676,
+    "sha256": "0e9dcb4dbd3da8a2bd3570e9bd3aeb4f3588164fe357fb19980472457863818f"
+   },
+   "tokenizer": {
+    "path": "languages/spanish_24l/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 246610,
+    "sha256": "9ade09bbdc64ab2b59952b90773fa0890b780ece4fd5aef0d36a00c6ad5f0531"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/spanish_24l/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "ce62b3f44f1b910086ef251c0cefd02e6b76ce923953e17317d39eb15e2b408f"
+    },
+    "anna": {
+     "path": "languages/spanish_24l/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30481760,
+     "sha256": "864dec4db627f76d3883563d148d32bc0c1002eda291adb0f3b77f6e35b820d3"
+    },
+    "azelma": {
+     "path": "languages/spanish_24l/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28712288,
+     "sha256": "d97b58cc878e50151aab8bcd5b22c0307026fb581764e5eb9ce4fa6e8e4a172c"
+    },
+    "caro_davy": {
+     "path": "languages/spanish_24l/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "6773d73df87b009593f8772d87c1cfd930fcd240ae708195819cb7f95459aed1"
+    },
+    "eponine": {
+     "path": "languages/spanish_24l/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27729248,
+     "sha256": "f98af6e1a0490836fade4625bc29fbf88f078f7af91722e8933f2ed80bb3ec90"
+    },
+    "estelle": {
+     "path": "languages/spanish_24l/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30285152,
+     "sha256": "8d231ad63a63c1a184046fd1e2547d02000dd501d9541bc6ea54bfb5c7d4bc89"
+    },
+    "eve": {
+     "path": "languages/spanish_24l/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "4f10a1c05a38016ace3a370d14498588ab057b7289f19fedd3d62c29b2524244"
+    },
+    "fantine": {
+     "path": "languages/spanish_24l/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 25763160,
+     "sha256": "58f192c57cc0ad93954b88e7e11b31b2c4c03670ab94642e1fa7615047e35265"
+    },
+    "jane": {
+     "path": "languages/spanish_24l/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 29302112,
+     "sha256": "528688225d15a16b8e2f225176b8a43066490a708acb03a0f35a80f946f72b54"
+    },
+    "lola": {
+     "path": "languages/spanish_24l/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 21831000,
+     "sha256": "3faac2398fb97f01c11af3ce45023063b0aa30b7b5569ab724fe57b87f46e43a"
+    },
+    "mary": {
+     "path": "languages/spanish_24l/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23797080,
+     "sha256": "0e98ca5e68ca1158139f3e50b1b7422c6dab484d5a2518185097b0f48724e7c4"
+    },
+    "vera": {
+     "path": "languages/spanish_24l/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26746208,
+     "sha256": "4e5b07e1ab9d5de485e70ec29d455f0616d1df9c6045749a95fc42ce8481a6cc"
+    },
+    "bill_boerst": {
+     "path": "languages/spanish_24l/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26156376,
+     "sha256": "252e6e6c8f14b836461f1b51175617adfa9dd10105505da8f19158fdbb4d0ca5"
+    },
+    "charles": {
+     "path": "languages/spanish_24l/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24780120,
+     "sha256": "407cd860b6353ac866c8330cbaaa8e7f4c26db13aaca7461bbed0b0eb772da26"
+    },
+    "daan": {
+     "path": "languages/spanish_24l/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 15539512,
+     "sha256": "60b31c70d7726fa2c1eb9149fdeb2dda8c7d3c7154dfa7f7f32fe8f1988d1862"
+    },
+    "george": {
+     "path": "languages/spanish_24l/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23600472,
+     "sha256": "9b4051033560098bab6ebde75269822e74d719a456502e5c62f2b7216480e3b9"
+    },
+    "giovanni": {
+     "path": "languages/spanish_24l/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 16522552,
+     "sha256": "fce4e86368684a36431011799ce99e21b38f21409c376e6ac67b23b6685cb874"
+    },
+    "javert": {
+     "path": "languages/spanish_24l/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "eb9adb7233aec33740798a0012940397e0a9313d460ec35dde081b7a5d52ccd2"
+    },
+    "marius": {
+     "path": "languages/spanish_24l/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "0603af0ff5a587ba40e0e6c83a94a4459433ccc771f718e6185e6093d2ff2494"
+    },
+    "michael": {
+     "path": "languages/spanish_24l/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28515680,
+     "sha256": "59deb06cb38fbb79ad7b50f066376bfae9a5775417fada7404150a49f59f63a2"
+    },
+    "paul": {
+     "path": "languages/spanish_24l/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27336032,
+     "sha256": "2d97df735569469902f65e5975dc495b0ac6ef1e5007f802f437e5cdbd27e1d8"
+    },
+    "peter_yearsley": {
+     "path": "languages/spanish_24l/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 14556464,
+     "sha256": "fdb84739052c30587173cfec816d497add3c3e2e0e46c287bf4b3bc3d9658a9e"
+    },
+    "stuart_bell": {
+     "path": "languages/spanish_24l/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "a287d14b01da53bd8fea5cb2c7347b882f651d67f86c3433d747b8be5d95fe14"
+    }
+   }
+  },
+  "dutch_24l": {
+   "config": "weights_path: {weights}\n\nreplace_characters:\n  '\"': ''\n  '“': ''\n  '”': ''\n  '„': ''\n  '«': ''\n  '»': ''\n  '’': ''''\n  '‘': ''''\n  '(': ''\n  ')': ''\n  '[': ''\n  ']': ''\n  '–': ','\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 24\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\n  #weights_path: partial.safetensors\n\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n  #weights_path: codec.safetensors\n",
+   "weights": {
+    "path": "languages/dutch_24l/model.safetensors",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 672178676,
+    "sha256": "c1b01fcf28b0a20411db2516ec17f26638444ee078cd9759818417debd473828"
+   },
+   "tokenizer": {
+    "path": "languages/dutch_24l/tokenizer.json",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "size": 245206,
+    "sha256": "e6f610b98c427641b4ab0e1024dca7843e3d6b620871a14b204932e42c5a1736"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/dutch_24l/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "d15b0604df5b796552f281cbf7429f43bb23b6db52aaa218706165b5d79c39b0"
+    },
+    "anna": {
+     "path": "languages/dutch_24l/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30481760,
+     "sha256": "43e2b2834d0d0d4ed1970396ddb0bcaf0fa886ea7c5cd19663f83ae200285672"
+    },
+    "azelma": {
+     "path": "languages/dutch_24l/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28712288,
+     "sha256": "8dc4e69b7cc23d18d39cc15f4375f1d4a5de329d9c7c4d3563a8aa55210a7edb"
+    },
+    "caro_davy": {
+     "path": "languages/dutch_24l/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "536a0da77fd480eef480b9946b0ae55840493b24abefde44516cfd169dc4f3de"
+    },
+    "eponine": {
+     "path": "languages/dutch_24l/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27729248,
+     "sha256": "ba6f4b59be94a503fb9db08201e2c9cebf88d270a38c6b17a5ebbaaea439bad2"
+    },
+    "estelle": {
+     "path": "languages/dutch_24l/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30285152,
+     "sha256": "e4b146dcbcdb5e4d38f6218b115cd68e36fe016db1f10734f77c21fd2c925f5f"
+    },
+    "eve": {
+     "path": "languages/dutch_24l/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "862dc233479b8d0490d4d2077511c3b88abe490608e4dc0efadfbb223c440c19"
+    },
+    "fantine": {
+     "path": "languages/dutch_24l/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 25763160,
+     "sha256": "82b51cc403c289199cfe45e07ce9abe9a1e24844e61852fb7465d8249ab2a271"
+    },
+    "jane": {
+     "path": "languages/dutch_24l/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 29302112,
+     "sha256": "d2d0bc912024449981250e2a069437d633c81b6eb772ec2b740dbf99f62239dc"
+    },
+    "lola": {
+     "path": "languages/dutch_24l/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 21831000,
+     "sha256": "08e77cde00db928a2f5f83cdb42316486b98e84701087af37672c7e9e600e9e9"
+    },
+    "mary": {
+     "path": "languages/dutch_24l/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23797080,
+     "sha256": "0327b1b5b91288877fa391f4bd8154878bec39a45419419c1a181ad04ffa85b6"
+    },
+    "vera": {
+     "path": "languages/dutch_24l/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26746208,
+     "sha256": "6e67731b67a27171ea9373f1548558385422005f02a76e8b21930701053c1718"
+    },
+    "bill_boerst": {
+     "path": "languages/dutch_24l/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26156376,
+     "sha256": "8058930b35beefb8315d57d4ffdecda44407c6344cdc60a0fbea4e7fd15e6db5"
+    },
+    "charles": {
+     "path": "languages/dutch_24l/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24780120,
+     "sha256": "b7ae74bcd9e6383707c82fb3dae4a8a6a35dc425ef1cd06f03130523ba621343"
+    },
+    "daan": {
+     "path": "languages/dutch_24l/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 15539512,
+     "sha256": "1502bb974230c33fbaa3cd0188f7654a227eed02638acc18395bc5522b749274"
+    },
+    "george": {
+     "path": "languages/dutch_24l/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23600472,
+     "sha256": "b4e75a818fc6e4dfdf1b779e3db5cf3fb1fcae96072eb7ee4b626041cd2bea24"
+    },
+    "giovanni": {
+     "path": "languages/dutch_24l/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 16522552,
+     "sha256": "cd44ca784de53525d839999de904b78fd9cc070611def369aa22064f315cb641"
+    },
+    "javert": {
+     "path": "languages/dutch_24l/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "8aef9610ea788ff1bcad6598086d17ce642bf20d2fbcbea600f672fd432537af"
+    },
+    "marius": {
+     "path": "languages/dutch_24l/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "03ae7faafa89486baf13e96be858384b3bf25fe6d38ff37e5a5c4cf528970485"
+    },
+    "michael": {
+     "path": "languages/dutch_24l/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28515680,
+     "sha256": "a01d22a2714cb07ccd31322f3994aaa8a8f378c81c8d71c602ea767b470cbe23"
+    },
+    "paul": {
+     "path": "languages/dutch_24l/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27336032,
+     "sha256": "7aebe943d04f2fb3e402b301a3abcc43360b79d4b6da4d5278dd2fb75fd4941e"
+    },
+    "peter_yearsley": {
+     "path": "languages/dutch_24l/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 14556464,
+     "sha256": "34d84ed90d9a172585c983e9c0191bd8b8d4f0fea20373cc7667b2d7facb7164"
+    },
+    "stuart_bell": {
+     "path": "languages/dutch_24l/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "bd0b580e8f8b7b6727eae781261dcb5c2252702c51591341dcd1b7a624fd5570"
+    }
+   }
+  },
+  "english_2026-09_24l": {
+   "config": "# english_2026-04_24l after training/configs/robustness_finetune.yaml (sampler head frozen).\nweights_path: {weights}\n\ndefault_temperature: 0.3\n# Replace characters that are absent from the training data.\nreplace_characters:\n  '’': \"'\"\n  '‘': \"'\"\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 6\n    dim: 512\n  transformer:\n    d_model: 1024\n    hidden_scale: 4\n    max_period: 10000\n    num_heads: 16\n    num_layers: 24\n  lookup_table:\n    dim: 1024\n    n_bins: 4000\n    tokenizer: tokenizers\n    tokenizer_path: {tokenizer}\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 512\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 512\n",
+   "weights": {
+    "path": "languages/english_2026-09_24l/model.safetensors",
+    "revision": "e7205b6ee50e654a5ea19f0e9df2b0813b05e921",
+    "size": 1304206614,
+    "sha256": "fc47778f1b4784638ce10a9417710607491dd765cd726e292ed24471fbbaff7a"
+   },
+   "tokenizer": {
+    "path": "languages/english_2026-09_24l/tokenizer.json",
+    "revision": "00eac05ed3d16bdc3f6b5d598874019c34a89214",
+    "size": 245020,
+    "sha256": "f498428e1eafee50492f7be13dc9bfafcfc12e508cd0eb1b01c92ecd5d8c6687"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/english_2026-09_24l/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "23305fad273b37be7ff3b17770b80ce2e0e0aa5edf153ecfd6cf5217de6dd489"
+    },
+    "anna": {
+     "path": "languages/english_2026-09_24l/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30481760,
+     "sha256": "6b5966b960d46ab36661f8a3d434bf345ccb6ad3e325fcb2083cd68968a2c591"
+    },
+    "azelma": {
+     "path": "languages/english_2026-09_24l/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28712288,
+     "sha256": "a4e64a879bc1f8de1a5fe011e9d8bab2b22b5c234f12706fc854119a11957bb6"
+    },
+    "caro_davy": {
+     "path": "languages/english_2026-09_24l/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "c0c55ba9eeb0fcdf92a9922c53653b5bc61b2edda1b8be767f8b57dcf4054531"
+    },
+    "eponine": {
+     "path": "languages/english_2026-09_24l/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27729248,
+     "sha256": "3e8cd76945612624ab8467900df57d112a9ba55ed915a1b76cb463a86099c435"
+    },
+    "estelle": {
+     "path": "languages/english_2026-09_24l/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 30285152,
+     "sha256": "54778ee5e226df72e652fa8e9b5af612a1ce1b1a52ce1fb4888c04fa79b6c923"
+    },
+    "eve": {
+     "path": "languages/english_2026-09_24l/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "7871b3f32a626d48b5fbc875c20ae5148794ba2e67a9f6c3be0bdef5afd5e769"
+    },
+    "fantine": {
+     "path": "languages/english_2026-09_24l/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 25763160,
+     "sha256": "9f69167260950129a62f8b81f92c3252c8b6599eab7b2da079db0ed888546910"
+    },
+    "jane": {
+     "path": "languages/english_2026-09_24l/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 29302112,
+     "sha256": "b7c3a5b8f17f3093af640483a9e024666725abc9aee511e9de9394bd8823c987"
+    },
+    "lola": {
+     "path": "languages/english_2026-09_24l/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 21831000,
+     "sha256": "f89f164d78f4f7b6c70bd0e6433c4371299066c10ee5f27d3e77fcfe612eaee0"
+    },
+    "mary": {
+     "path": "languages/english_2026-09_24l/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23797080,
+     "sha256": "425d7f19283700fca7541b83a78ed7caba8399810607c4631b813ca3d7e03acb"
+    },
+    "vera": {
+     "path": "languages/english_2026-09_24l/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26746208,
+     "sha256": "22e4d41abc70a44cd4603d3385e60874cb59329458ff526f32a174716e8e57bd"
+    },
+    "bill_boerst": {
+     "path": "languages/english_2026-09_24l/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 26156376,
+     "sha256": "c65a91ce318b251c1087a0cd781201468a5860eeac9a0e6b11e5c6920208c6ff"
+    },
+    "charles": {
+     "path": "languages/english_2026-09_24l/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24780120,
+     "sha256": "a4a16364349315b141d1995f93d9d2b959f4e54ede641dc80d77ef1145d2a689"
+    },
+    "daan": {
+     "path": "languages/english_2026-09_24l/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 15539512,
+     "sha256": "6db8ee18c5f687cb2f450d5fa74c1a8dc2c038f39a8b89fb4a435bd0102a93fc"
+    },
+    "george": {
+     "path": "languages/english_2026-09_24l/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 23600472,
+     "sha256": "7422a0b5bc7001566b826a6ef4338d2cbe612aeb274213ff2a76c90a014c1dd7"
+    },
+    "giovanni": {
+     "path": "languages/english_2026-09_24l/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 16522552,
+     "sha256": "3c1bd37d1fa1391d532fece5c4a53ab0e8a1f02aa1568b8b75e1d7786ed45fa5"
+    },
+    "javert": {
+     "path": "languages/english_2026-09_24l/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24583512,
+     "sha256": "1ff001c39d7df8b57df8e5fde940ca4f386653fd42450e0d290034c208d271c2"
+    },
+    "marius": {
+     "path": "languages/english_2026-09_24l/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 24976728,
+     "sha256": "a4c0fcd50f6dd5ec852dafe791ff735377297d062eb6bc9557c8cf3b46f91a5d"
+    },
+    "michael": {
+     "path": "languages/english_2026-09_24l/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 28515680,
+     "sha256": "c2a1d8fd6b192d69a0db9425d9dab8532fe44749360d6f04f161a97646fda2a7"
+    },
+    "paul": {
+     "path": "languages/english_2026-09_24l/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 27336032,
+     "sha256": "318783a913b3920da19203683830e4c981cfa8a36835f4dd8b345f9d598241c6"
+    },
+    "peter_yearsley": {
+     "path": "languages/english_2026-09_24l/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 14556464,
+     "sha256": "d8c513ae5b96c1c0c68b599b12b0793b73c4f114987d807d728b0b177206c18c"
+    },
+    "stuart_bell": {
+     "path": "languages/english_2026-09_24l/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 20258136,
+     "sha256": "20e1072f2208d6f60a5c9f143d26b3fb0bbc97dea50b00a0ad0d3cce1502a649"
+    }
+   }
+  },
+  "english_18m_refl_2026-10": {
+   "config": "# english_18m_2026-10 after reward fine-tuning (REFL).\n\nweights_path: {weights}\ndefault_temperature: 0.3\n# Replace characters that are absent from the training data.\nreplace_characters:\n  '–': ','\n  '—': ','\n  '’': \"'\"\n  '‘': \"'\"\n\nflow_lm:\n  insert_bos_before_voice: true\n  dtype: float32\n  flow:\n    depth: 4\n    dim: 192\n    type: drifting\n  transformer:\n    d_model: 512\n    hidden_scale: 1\n    max_period: 10000\n    num_heads: 8\n    num_layers: 8\n    attn_dim: null\n    num_kv_heads: null\n  lookup_table:\n    dim: 512\n    n_bins: 4000\n    tokenizer: sentencepiece\n    tokenizer_path: {tokenizer}\n    rank: null\n  z_dim: 64\nmimi:\n  dtype: float32\n  sample_rate: 24000\n  inner_dim: 32\n  outer_dim: 128\n  channels: 1\n  frame_rate: 12.5\n  seanet:\n    dimension: 512\n    channels: 1\n    n_filters: 64\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 7\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  transformer:\n    d_model: 512\n    num_heads: 8\n    num_layers: 2\n    layer_scale: 0.01\n    context: 250\n    dim_feedforward: 2048\n    input_dimension: 512\n    output_dimensions:\n    - 512\n  quantizer:\n    dimension: 32\n    output_dimension: 128\n  decoder_seanet:\n    dimension: 128\n    channels: 1\n    n_filters: 32\n    n_residual_layers: 1\n    ratios:\n    - 6\n    - 5\n    - 4\n    kernel_size: 3\n    residual_kernel_size: 3\n    last_kernel_size: 3\n    dilation_base: 2\n    pad_mode: constant\n    compress: 2\n  decoder_transformer:\n    d_model: 128\n    num_heads: 4\n    num_layers: 12\n    layer_scale: 0.01\n    context: 50\n    dim_feedforward: 384\n    input_dimension: 128\n    output_dimensions:\n    - 128\ndefault_eos_threshold: -1.0\n",
+   "weights": {
+    "path": "languages/english_18m_refl_2026-10/model.safetensors",
+    "revision": "08ffc58775e62aad9409511b9591c9af626270f3",
+    "size": 111728528,
+    "sha256": "c1ea673a6e08e2b178ba26eb75c963017996ed15abe60f581b296bf4f0abb8b7"
+   },
+   "tokenizer": {
+    "path": "languages/english_18m_refl_2026-10/tokenizer.model",
+    "revision": "08ffc58775e62aad9409511b9591c9af626270f3",
+    "size": 59339,
+    "sha256": "d461765ae179566678c93091c5fa6f2984c31bbe990bf1aa62d92c64d91bc3f6"
+   },
+   "voices": {
+    "alba": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/alba.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4163992,
+     "sha256": "85b31a5f76f10b516d76f92d52cf455aeaefb3627cb003499874b9c8f3b7953b"
+    },
+    "anna": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/anna.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5081496,
+     "sha256": "9a6908049750b1c64b5b005b960f318ed74be2bdff38f9c3805ea285e1b69b73"
+    },
+    "azelma": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/azelma.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4786584,
+     "sha256": "46ef520966ebc90c6c7d52e119a53df852247d180195760911187e15ee5917d3"
+    },
+    "caro_davy": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/caro_davy.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3377560,
+     "sha256": "8eadff0229430d2b7b84447b86f90c9dce87a053e19ccbee3bbbe2cd1a5a06f6"
+    },
+    "eponine": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/eponine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4622744,
+     "sha256": "6496f6843d20802d3c1ad03d31ed7f381fad32cc73c4f6a26c22f360c2cc3735"
+    },
+    "estelle": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/estelle.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 5048728,
+     "sha256": "dffbce4ed163251723124967cbcfddcc98436f4b4b2d0fc18e0badbcebf840bc"
+    },
+    "eve": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/eve.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4098456,
+     "sha256": "f89ae14c3f3b6053aefbe3bfa5236a0c61b25bb6b45e15b8a6d0fa6f06979a3a"
+    },
+    "fantine": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/fantine.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4295064,
+     "sha256": "575d0106664262af00161638948d27015eda5284c2c4452ab7befd37438e3afe"
+    },
+    "jane": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/jane.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4884888,
+     "sha256": "3174dc74718820fcb132cd346e2f21cd7fb61e539889e26dd5bcbffeb2a1ec6a"
+    },
+    "lola": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/lola.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3639704,
+     "sha256": "ac64447e409373d34a9b15fbc62bb8a9e9c5d8f85c1cef623c68b6fa66dfabfe"
+    },
+    "mary": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/mary.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3967384,
+     "sha256": "ce64cd56aadd49acabfbf8b0d3713ac67e199d34862d3dd732d56229900aaa6b"
+    },
+    "vera": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/vera.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4458904,
+     "sha256": "710c857cb3eac9a427007441306219df9fafb6b305d2470df012596ef9b55d6e"
+    },
+    "bill_boerst": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/bill_boerst.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4360600,
+     "sha256": "bcd7d616be5232ec12f61c56c2d272011307dadcebf27e366ff531aacaa954a8"
+    },
+    "charles": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/charles.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4131224,
+     "sha256": "fa500a779ef5250c56fea8567b880a5b5bfab501958b2d906bca63ceec94dc27"
+    },
+    "daan": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/daan.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 2591120,
+     "sha256": "697d54370f6349359e157d137d9224a420b3bb3482c62d036bfa68db3b82e0f8"
+    },
+    "george": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/george.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3934616,
+     "sha256": "09ee2a225d2734053e9fc672afb711fa0d82c1fc26b87c817dfbac614b84baae"
+    },
+    "giovanni": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/giovanni.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 2754960,
+     "sha256": "e70820b86c7c5f5264def0e65422011900a204b020051d75e41b00eca837d2c1"
+    },
+    "javert": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/javert.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4098456,
+     "sha256": "9fbce1a3e4553c33163fd0e1f50c83a9b955ca02ad03e64a9bb304b3aa18d33f"
+    },
+    "marius": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/marius.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4163992,
+     "sha256": "2a9c7252e2293fc042f90cd4bd0e67f4cef839dc67c19d233c4fe507a7e161a9"
+    },
+    "michael": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/michael.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4753816,
+     "sha256": "1a08a77205716e318f8bd23b0b21f0ec30c7e7f905402e67c9182d494d680784"
+    },
+    "paul": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/paul.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 4557208,
+     "sha256": "fe10fb3aaeb39aec5a539a003b9d4c72e4ce3d8415e837005dc7d5b18fe12c78"
+    },
+    "peter_yearsley": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/peter_yearsley.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 2427280,
+     "sha256": "9dca878d3e1a060f20d3814b9234a9220567f99a7d54503f938a5f2cd230c94e"
+    },
+    "stuart_bell": {
+     "path": "languages/english_18m_refl_2026-10/embeddings/stuart_bell.safetensors",
+     "revision": "a3055dcb533cf2ec90458008a01e7cef550bae2a",
+     "size": 3377560,
+     "sha256": "0331aa0b3414f94f2f276546005a4040a26b3703f4beb3bd8ff7362ff2dc3c21"
+    }
+   }
+  }
+ }
+}

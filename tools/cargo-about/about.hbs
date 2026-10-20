@@ -1,0 +1,27 @@
+Third-party Rust crates in the pocket-tts binary
+================================================
+
+The pocket-tts binary in this add-on is Kyutai's release build of
+https://github.com/kyutai-labs/pocket-tts (@TAG@). It links the
+crates below statically. Each crate's source, at the version named, is on
+https://crates.io/crates/<name>/<version>, except ptts, which is
+https://github.com/gabrieldemarmiesse/xn-ptts at the commit Cargo.lock names.
+The MPL-2.0 crates (symphonia and others) are unmodified; their source is there.
+
+Overview
+--------
+{{#each overview}}
+{{{name}}} ({{count}} crates){{#each indices}}{{/each}}
+{{/each}}
+
+{{#each licenses}}
+--------------------------------------------------------------------------------
+{{{name}}}
+Used by:
+{{#each used_by}}
+  - {{crate.name}} {{crate.version}}
+{{/each}}
+
+{{{text}}}
+
+{{/each}}
