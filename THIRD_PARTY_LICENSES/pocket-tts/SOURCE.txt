@@ -23,3 +23,8 @@ versions CRATES.txt names, for example https://crates.io/crates/symphonia/0.5.5.
 
 The Windows binary is linked with the static Microsoft C runtime
 (+crt-static), Microsoft "Distributable Code" (see ../msvc-runtime/NOTICE.txt).
+
+Kyutai publishes no Haiku binary. The Haiku build is compiled from the same
+tag's rust/ folder and Cargo.lock, with no source changes: Haiku's Rust 1.94
+needs RUSTC_BOOTSTRAP=1 and -Zcrate-attr=feature(cfg_select) for one crate
+(sysinfo) that uses a macro stabilised in 1.95.
