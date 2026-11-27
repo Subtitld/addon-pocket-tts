@@ -1,7 +1,7 @@
 {
   "manifest_version": 1,
   "id": "pocket-tts",
-  "version": "26.10.1",
+  "version": "26.11.1",
   "display_name": "Pocket TTS (offline, 7 languages)",
   "summary": "Kyutai's Pocket TTS: speaks English, French, German, Portuguese, Italian, Spanish and Dutch at 24 kHz, in 23 voices, on the CPU at several times real time. Each language's model, about 220 MB, downloads on its first line.",
   "author": "Subtitld",
